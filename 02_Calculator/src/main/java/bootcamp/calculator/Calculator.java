@@ -24,7 +24,7 @@ public class Calculator {
             }
             break;
             case "/": {
-                result = params.getX().divide(params.getY());
+                result = params.getX().divide(params.getY(), 1, RoundingMode.HALF_DOWN);
             }
             break;
             default: {

@@ -10,9 +10,10 @@ import java.math.BigDecimal;
  */
 public class CalculatorApp {
     public static void main(final String[] args) {
-        BigDecimal x = new BigDecimal(args[0]);
-        BigDecimal y = new BigDecimal(args[1]);
-        String operator = args[2];
+
+        final BigDecimal x = new BigDecimal(args[0]); //required to convert CLI arg from String to BD
+        final BigDecimal y = new BigDecimal(args[1]);
+        final String operator = args[2]; //not necessary, but more readable
 
         Params params = new Params(x,y,operator);
         Calculator calculator = new Calculator();
