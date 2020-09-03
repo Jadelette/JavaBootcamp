@@ -7,6 +7,14 @@ public class Ticket {
         this.seat = seat;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return title.equals(ticket.title)  &&
+                seat == (ticket.seat);}
+
     public String getTitle() {
         return title;
     }
