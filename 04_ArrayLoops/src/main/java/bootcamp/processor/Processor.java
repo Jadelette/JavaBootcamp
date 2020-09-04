@@ -41,7 +41,7 @@ public class Processor {
 
     public Summary process() {
         Summary summary;
-        
+
         if (ar.length > 0) {
         summary = new Summary(findMin(), findMax(), calculateSum(), findCount(), calculateAverage());
         } else {summary = new Summary(Double.NaN, Double.NaN, 0, 0, Double.NaN);}
@@ -49,11 +49,15 @@ public class Processor {
     }
 
     public double getValue(int index) throws ArrayIndexOutOfBoundsException {
-        if (index < findCount()) {
-        double valueAtIndex = 9;
-        return valueAtIndex;} else {
-            throw new ArrayIndexOutOfBoundsException("No value at specified index");
-        }
+       try
+       {double valueAtIndex = ar[index];
+        return valueAtIndex;}
+       catch(ArrayIndexOutOfBoundsException e){
+           System.out.println(e + ": Index value provided exceeds length of array");
+           return Double.NaN;
+       }
     }
-
 }
+
+
+

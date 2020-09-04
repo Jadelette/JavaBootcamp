@@ -2,7 +2,12 @@ package bootcamp.process;
 
 import bootcamp.data.Summary;
 import bootcamp.processor.Processor;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -51,12 +56,14 @@ public class ProcessorTest {
 
     }
 
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    @Test
     public void shouldGetExceptionFromGetValueWhenIndexTooLarge() {
         //given
         double[] ar = {5, 7, 9, 3, 1};
         //when
         Processor processor = new Processor(ar);
         double result = processor.getValue(7);
+        //then
+        assertThat(result, is(Double.NaN));
     }
 }
