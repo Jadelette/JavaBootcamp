@@ -47,17 +47,18 @@ public class ProcessorTest {
     public void shouldReturnValueAtGivenArrayIndex() {
         //given
         double[] ar = {5, 7, 9, 3, 1};
-        double expectedResult = 9;
+
         //when
         Processor processor = new Processor(ar);
         double result = processor.getValue(2);
+        double expectedResult = 9;
         //then
         assertThat(result, is(expectedResult));
 
     }
 
     @Test
-    public void shouldGetExceptionFromGetValueWhenIndexTooLarge() {
+    public void shouldGetNaNFromGetValueWhenIndexTooLarge() {
         //given
         double[] ar = {5, 7, 9, 3, 1};
         //when
