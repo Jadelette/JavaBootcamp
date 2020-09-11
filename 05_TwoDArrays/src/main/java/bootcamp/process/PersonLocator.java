@@ -22,6 +22,7 @@ public class PersonLocator {
                 for (Person person : arr)
                     if (personToFind.equals(person)) {
                         location = new Location(Arrays.asList(people).indexOf(arr), Arrays.asList(arr).indexOf(person));
+                        break;
                     }
         }
 

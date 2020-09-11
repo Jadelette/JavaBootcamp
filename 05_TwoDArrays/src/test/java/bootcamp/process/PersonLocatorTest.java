@@ -7,17 +7,18 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 
 public class PersonLocatorTest {
+    //given
+    Person[][] people = {
+            {new Person("Bob", "Marley"), new Person("David", "Bowie"), new Person("Freddie","Mercury")},
+            {new Person("Mickey", "Mouse"), new Person("Donald", "Duck"), new Person("Roger", "Rabbit")},
+            {new Person("Woody", "Harrelson"), new Person("Bill", "Murray"), new Person("Jeff", "Bridges")}
+    };
+    PersonLocator personaLocator = new PersonLocator(people);
+
 
     @Test
     public void shouldReturnCorrectLocationIfPersonIsPresent() {
         //given
-        Person[][] people = {
-                {new Person("Bob", "Marley"), new Person("David", "Bowie"), new Person("Freddie","Mercury")},
-                {new Person("Mickey", "Mouse"), new Person("Donald", "Duck"), new Person("Blinky", "Bill")},
-                {new Person("Woody", "Harrelson"), new Person("Bill", "Murray"), new Person("Jeff", "Bridges")}
-             };
-        PersonLocator personaLocator = new PersonLocator(people);
-
         Location location = new Location(0, 2);
         Optional<Location> expectedResult = Optional.of(location);
         //when
@@ -31,13 +32,6 @@ public class PersonLocatorTest {
 
     @Test
     public void shouldNotReturnALocationIfNameNotFound() {
-        //given
-        Person[][] people = {
-                {new Person("Bob", "Marley"), new Person("David", "Bowie"), new Person("Freddie","Mercury")},
-                {new Person("Mickey", "Mouse"), new Person("Donald", "Duck"), new Person("Blinky", "Bill")},
-                {new Person("Woody", "Harrelson"), new Person("Bill", "Murray"), new Person("Jeff", "Bridges")}
-        };
-        PersonLocator personaLocator = new PersonLocator(people);
         //when
         Optional<Location> result = personaLocator.find(new Person("Eddie", "Murphy"));
         //then
