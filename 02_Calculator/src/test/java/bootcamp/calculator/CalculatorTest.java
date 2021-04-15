@@ -10,64 +10,56 @@ public class CalculatorTest {
 
     @Test
     public void shouldAddTwoParams() {
-        final Params params = new Params(new BigDecimal(3.2),
-                new BigDecimal(1.8),
-                "+");
+        final Params params = new Params("3.2", "1.8", "+");
+        Calculator calculator = new Calculator(params);
 
-        final BigDecimal result = new Calculator().calculate(params);
+        final BigDecimal result = calculator.calculate(params);
 
         assertEquals(new BigDecimal(5), result);
     }
 
     @Test
     public void shouldSubtractTwoParams() {
-        final Params params = new Params(new BigDecimal(3.2),
-                new BigDecimal(0.2),
-                "-");
+        final Params params = new Params("3.2", "0.2", "-");
+        Calculator calculator = new Calculator(params);
 
-        final BigDecimal result = new Calculator().calculate(params);
+        final BigDecimal result = calculator.calculate(params);
 
         assertEquals(new BigDecimal(3), result);
     }
 
     @Test
     public void shouldMutiplyTwoParams() {
-        final Params params = new Params(new BigDecimal(2.25),
-                new BigDecimal(2),
-                "x");
+        final Params params = new Params("2.25", "2", "x");
+        Calculator calculator = new Calculator(params);
 
-        final BigDecimal result = new Calculator().calculate(params);
+        final BigDecimal result = calculator.calculate(params);
 
         assertEquals(new BigDecimal(4.5), result);
     }
 
     @Test
     public void shouldDivideTwoParams() {
-        final Params params = new Params(new BigDecimal(3.2),
-                new BigDecimal(0.4),
-                "/");
+        final Params params = new Params("3.2", "0.4", "/");
+        Calculator calculator = new Calculator(params);
 
-        final BigDecimal result = new Calculator().calculate(params);
+        final BigDecimal result = calculator.calculate(params);
 
         assertEquals(new BigDecimal(8), result);
     }
 
     @Test(expected = ArithmeticException.class)
     public void shouldThrowArithmeticExceptionWhenDividingByZero() {
-        final Params params = new Params(new BigDecimal(3.2),
-                new BigDecimal(0),
-                "/");
-        Calculator calculator = new Calculator();
+        final Params params = new Params("3.2", "0", "/");
+        Calculator calculator = new Calculator(params);
 
         calculator.calculate(params);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldThrowIllegalArgumentExceptionWhenPassingInvalidOperator() {
-        final Params params = new Params(new BigDecimal(3.2),
-                new BigDecimal(1),
-                "*");
-        Calculator calculator = new Calculator();
+        final Params params = new Params("3.2", "1", "*");
+        Calculator calculator = new Calculator(params);
 
         calculator.calculate(params);
     }
