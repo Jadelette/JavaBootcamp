@@ -2,6 +2,7 @@ package bootcamp.process;
 
 import bootcamp.data.Location;
 import bootcamp.data.Person;
+import org.junit.Before;
 import org.junit.Test;
 import java.util.Optional;
 import static org.junit.Assert.*;
@@ -13,8 +14,13 @@ public class PersonLocatorTest {
             {new Person("Mickey", "Mouse"), new Person("Donald", "Duck"), new Person("Roger", "Rabbit")},
             {new Person("Woody", "Harrelson"), new Person("Bill", "Murray"), new Person("Jeff", "Bridges")}
     };
-    PersonLocator personaLocator = new PersonLocator(people);
 
+    PersonLocator personaLocator;
+
+   @Before
+    public void setUp() {
+    personaLocator = new PersonLocator(people);
+   }
 
     @Test
     public void shouldReturnCorrectLocationIfPersonIsPresent() {

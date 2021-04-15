@@ -23,13 +23,13 @@ public class Processor {
 
     private double findMax() {
         Arrays.sort(ar);
-        int maxIndex = (int) (findCount() - 1);
+        int maxIndex = (ar.length - 1);
         return ar[maxIndex];
     }
 
     private double calculateSum() {
         double sum = 0;
-        for (int i = 0; i < findCount(); i++) {
+        for (int i = 0; i < ar.length; i++) {
             sum += ar[i];
         }
         return sum;
@@ -43,19 +43,32 @@ public class Processor {
         Summary summary;
 
         if (ar.length > 0) {
-        summary = new Summary(findMin(), findMax(), calculateSum(), findCount(), calculateAverage());
-        } else {summary = new Summary(Double.NaN, Double.NaN, 0, 0, Double.NaN);}
+            summary = new Summary(
+                    findMin(),
+                    findMax(),
+                    calculateSum(),
+                    findCount(),
+                    calculateAverage()
+            );
+        } else {
+            summary = new Summary(
+                    Double.NaN,
+                    Double.NaN,
+                    0,
+                    0,
+                    Double.NaN
+            );
+        }
         return summary;
     }
 
     public double getValue(int index) throws ArrayIndexOutOfBoundsException {
-       try
-       {double valueAtIndex = ar[index];
-        return valueAtIndex;}
-       catch(ArrayIndexOutOfBoundsException e){
-           System.out.println(e + ": Index value provided exceeds length of array");
-           return Double.NaN;
-       }
+        try {
+            return ar[index];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(e + ": Index value provided exceeds length of array");
+            return Double.NaN;
+        }
     }
 }
 
