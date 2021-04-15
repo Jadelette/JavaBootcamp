@@ -8,7 +8,6 @@ import java.util.Optional;
 import static org.junit.Assert.*;
 
 public class PersonLocatorTest {
-    //given
     Person[][] people = {
             {new Person("Bob", "Marley"), new Person("David", "Bowie"), new Person("Freddie","Mercury")},
             {new Person("Mickey", "Mouse"), new Person("Donald", "Duck"), new Person("Roger", "Rabbit")},
@@ -24,13 +23,10 @@ public class PersonLocatorTest {
 
     @Test
     public void shouldReturnCorrectLocationIfPersonIsPresent() {
-        //given
-        Location location = new Location(0, 2);
-        Optional<Location> expectedResult = Optional.of(location);
-        //when
+        Optional<Location> expectedResult = Optional.of( new Location(0, 2));
+
         Optional<Location> result = personaLocator.find(new Person("Freddie", "Mercury"));
 
-        //then
         assertTrue(result.isPresent());
         assertEquals(expectedResult, result);
 
@@ -38,9 +34,8 @@ public class PersonLocatorTest {
 
     @Test
     public void shouldNotReturnALocationIfNameNotFound() {
-        //when
         Optional<Location> result = personaLocator.find(new Person("Eddie", "Murphy"));
-        //then
+
         assertTrue(result.isEmpty());
     }
 }

@@ -7,27 +7,26 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class PersonLocator {
-    private final Person[][] people;
+  private final Person[][] people;
 
-    //TODO Constructor
-    public PersonLocator(Person[][] people) {
-        this.people = people;
-    }
+  public PersonLocator(Person[][] people) {
+    this.people = people;
+  }
 
-    public Optional<Location> find(final Person personToFind) {
-        Location location = null;
-
-
-            for (Person[] arr : people) {
-                for (Person person : arr)
-                    if (personToFind.equals(person)) {
-                        location = new Location(Arrays.asList(people).indexOf(arr), Arrays.asList(arr).indexOf(person));
-                        break;
-                    }
-        }
-
-         return Optional.ofNullable(location);
-
+  public Optional<Location> find(final Person personToFind) {
+    Location location = null;
+    for (Person[] personArr : people) {
+      for (Person person : personArr)
+        if (personToFind.equals(person)) {
+          location = new Location(
+              Arrays.asList(people).indexOf(personArr),
+              Arrays.asList(personArr).indexOf(person)
+          );
+          break;
         }
     }
+
+    return Optional.ofNullable(location);
+  }
+}
 
